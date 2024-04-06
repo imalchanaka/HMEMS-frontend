@@ -12,6 +12,14 @@ import {
     SelectTrigger,
     SelectValue
 } from "@/components/ui/select.jsx";
+import {
+    FormControl,
+    FormDescription,
+    FormField,
+    FormItem,
+    FormLabel,
+    FormMessage,
+} from "@/components/ui/form"
 import {Button} from "@/components/ui/button.jsx";
 import {AlertCircle, Loader2} from "lucide-react"
 import {Alert, AlertDescription, AlertTitle} from "@/components/ui/alert.jsx";
@@ -146,31 +154,34 @@ const CreateUser = () => {
                                 />
                             </div>
                             <div className="grid gap-2">
-                                <Label htmlFor="role">Role</Label>
-                                <Select
-                                        id="role"
-                                        name="role"
-                                        value={role}
-                                        onChange={(e) => setRole(e.target.value)}
-                                        required
+                                <Label htmlFor="genericName">Role</Label>
+                                <select
+                                    id="role"
+                                    name="role"
+                                    value={role}
+                                    onChange={(e) => setRole(e.target.value)}
+                                    required
+                                    style={{
+                                        width: "100%",
+                                        padding: "8px",
+                                        marginBottom: "10px",
+                                        border: "1px solid #ccc",
+                                        borderRadius: "4px",
+                                        boxSizing: "border-box"
+                                    }}
                                 >
-                                    <SelectTrigger>
-                                        <SelectValue placeholder="Select a Role"/>
-                                    </SelectTrigger>
-                                    <SelectContent>
-                                        <SelectGroup>
-                                            <SelectLabel>Fruits</SelectLabel>
-                                            <SelectItem value="wardAdmin">Ward Admin</SelectItem>
-                                            <SelectItem value="electrician">Electrician</SelectItem>
-                                            <SelectItem value="Technical Vendor">Technical Vendor</SelectItem>
-                                            <SelectItem value="Non Technical vendor">Non Technical vendor</SelectItem>
-                                        </SelectGroup>
-                                    </SelectContent>
-                                </Select>
+                                    <option value="">Select Role</option>
+                                    <option value="wardAdmin">Ward Admin</option>
+                                    <option value="electrician">Electrician</option>
+                                    <option value="electrician">Technical Vendor</option>
+                                    <option value="electrician">Non Technical vendor</option>
+
+                                    {/* Add more options as needed */}
+                                </select>
                             </div>
                             <Button type="submit" className="w-full" disabled={isLoading}>
                                 {isLoading && (
-                                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                                    <Loader2 className="mr-2 h-4 w-4 animate-spin"/>
                                 )}
                                 {isLoading ? "Adding User..." : "Add User"}
                             </Button>

@@ -10,7 +10,7 @@ export const useUserContext = () => {
         setIsLoading(true)
         setError(null)
 
-        const response = await fetch('/api/user/addUser', {
+        const response = await fetch('http://localhost:4000/api/user/addUser', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({ email, password,firstName, lastName, addressLine1, addressLine2, contact, role })
