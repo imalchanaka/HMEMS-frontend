@@ -10,6 +10,15 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea"
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
 
 const CreateReq = () => {
   const [serialNumber, setSerialNumber] = useState("");
@@ -51,14 +60,23 @@ const CreateReq = () => {
             </div>
             <div className="grid gap-2">
               <Label htmlFor="vendor">Vendor</Label>
-              <Input
-                id="vendor"
-                type="text"
-                placeholder="Enter Vendor"
-                required
-                onChange={(e) => setVendor(e.target.value)}
-                value={vendor}
-              />
+              <Select id="vendor"
+                      required
+                      onChange={(e) => setVendor(e.target.value)}>
+                <SelectTrigger>
+                  <SelectValue placeholder="Select a Vendor" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectGroup>
+                    <SelectLabel>Fruits</SelectLabel>
+                    <SelectItem value="apple">Apple</SelectItem>
+                    <SelectItem value="banana">Banana</SelectItem>
+                    <SelectItem value="blueberry">Blueberry</SelectItem>
+                    <SelectItem value="grapes">Grapes</SelectItem>
+                    <SelectItem value="pineapple">Pineapple</SelectItem>
+                  </SelectGroup>
+                </SelectContent>
+              </Select>
             </div>
             <div className="grid gap-2">
               <Label htmlFor="brand">Brand</Label>
@@ -116,14 +134,24 @@ const CreateReq = () => {
             </div>
             <div className="grid gap-2">
               <Label htmlFor="equipmentType">Equipment Type</Label>
-              <Input
-                id="equipmentType"
-                type="text"
-                placeholder="Enter Equipment Type"
-                required
-                onChange={(e) => setEquipmentType(e.target.value)}
-                value={equipmentType}
-              />
+              <Select id="equipmentType"
+                      required
+                      onChange={(e) => setEquipmentType(e.target.value)}
+              >
+                <SelectTrigger>
+                  <SelectValue placeholder="Select a Equipment Type" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectGroup>
+                    <SelectLabel>Fruits</SelectLabel>
+                    <SelectItem value="apple">Apple</SelectItem>
+                    <SelectItem value="banana">Banana</SelectItem>
+                    <SelectItem value="blueberry">Blueberry</SelectItem>
+                    <SelectItem value="grapes">Grapes</SelectItem>
+                    <SelectItem value="pineapple">Pineapple</SelectItem>
+                  </SelectGroup>
+                </SelectContent>
+              </Select>
             </div>
             <div className="grid gap-2">
               <Label htmlFor="comment">Comment</Label>
