@@ -9,6 +9,7 @@ import {
     DropdownMenuLabel, DropdownMenuSeparator,
     DropdownMenuTrigger
 } from "@/components/ui/dropdown-menu.jsx";
+import {Link} from "react-router-dom";
 
 const Header = () => {
     return (
@@ -22,19 +23,19 @@ const Header = () => {
                     <Package2 className="h-6 w-6"/>
                     <span className="sr-only">Acme Inc</span>
                 </a>
-                <a
-                    href="#"
+                <Link
+                    to={'/'}
                     className="text-foreground transition-colors hover:text-foreground"
                 >
                     Dashboard
-                </a>
-                <a
-                    href="#"
+                </Link>
+                <Link
+                    to={'/create/users'}
                     className="text-muted-foreground transition-colors hover:text-foreground"
                 >
                    Add&nbsp;User
-                </a>
-              
+                </Link>
+
             </nav>
             <Sheet>
                 <SheetTrigger asChild>
@@ -65,7 +66,7 @@ const Header = () => {
                         >
                             Add&nbsp;User
                         </a>
-                     
+
                     </nav>
                 </SheetContent>
             </Sheet>

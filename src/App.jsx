@@ -4,6 +4,7 @@ import Login from "@/pages/auth/Login.jsx";
 import {useAuthContext} from "@/hooks/useAuthContext.js";
 import Header from "@/components/Header.jsx";
 import CreateReq from "./pages/purchasing/CreateReq";
+import CreateUser from "@/pages/users/CreateUser.jsx";
 
 function App() {
     const { user } = useAuthContext();
@@ -18,6 +19,7 @@ function App() {
                         <Route path="/login" element={!user ? <Login /> : <Navigate to="/" replace />} />
 
                         <Route path="/create/purchasing-req" element={user ? <CreateReq /> : <Navigate to="/" replace />} />
+                        <Route path="/create/users" element={user ? <CreateUser /> : <Navigate to="/" replace />} />
                     </Routes>
                 </main>
             </div>
