@@ -12,8 +12,9 @@ import {
     SelectTrigger,
     SelectValue
 } from "@/components/ui/select.jsx";
-import {Textarea} from "@/components/ui/textarea.jsx";
 import {Button} from "@/components/ui/button.jsx";
+import {AlertCircle, Loader2} from "lucide-react"
+import {Alert, AlertDescription, AlertTitle} from "@/components/ui/alert.jsx";
 
 const CreateUser = () => {
     const [email, setEmail] = useState("");
@@ -59,7 +60,25 @@ const CreateUser = () => {
                 <CardHeader>
                     <CardTitle className="text-2xl">Create User</CardTitle>
                     <CardDescription>Please fill out the following fields using correct details:</CardDescription>
-                    {/* Error handling component */}
+                    {error && (
+                        <Alert variant="destructive" className="bg-red-100">
+                            <AlertCircle className="h-4 w-4" />
+                            <AlertTitle>Error</AlertTitle>
+                            <AlertDescription>
+                                {error}
+                            </AlertDescription>
+                        </Alert>
+                    )}
+
+                    {isSuccess && (
+                        <Alert className="bg-success-100">
+                            <AlertCircle className="h-4 w-4" />
+                            <AlertTitle>Success</AlertTitle>
+                            <AlertDescription>
+                                User added successfully!
+                            </AlertDescription>
+                        </Alert>
+                    )}
                 </CardHeader>
                 <CardContent>
                     <form onSubmit={handleSubmit}>
@@ -149,8 +168,11 @@ const CreateUser = () => {
                                     </SelectContent>
                                 </Select>
                             </div>
-                            <Button type="submit" className="w-full">
-                                Submit
+                            <Button type="submit" className="w-full" disabled={isLoading}>
+                                {isLoading && (
+                                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                                )}
+                                {isLoading ? "Adding User..." : "Add User"}
                             </Button>
                         </div>
                     </form>
